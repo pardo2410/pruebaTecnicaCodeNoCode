@@ -8,7 +8,7 @@ Con el objetivo de mejorar el proceso de generación de los reportes se propone 
 
 ***1.	Script para extraer la información asociada a los eventos:*** La información de eventos que se encuentra contenida en cada una de las hojas del reporte se extrae y posteriormente se almacena en una hoja denominada “Eventos”.
 
-###Acciones efectuadas por script:
+### Acciones efectuadas por script:
 
 *	Obtiene la hoja activa del archivo de Google Sheets.
 *	Crea una nueva hoja denominada ‘Eventos’ o limpia la existente si ya está ya existe.
@@ -18,7 +18,7 @@ Con el objetivo de mejorar el proceso de generación de los reportes se propone 
 *	Agrega los encabezados a la nueva hoja ‘Eventos’.
 *	Copia los datos de los arrays a la hoja ‘Eventos’ en las posiciones adecuadas.
 
-###Prototipo de Script Sugerido:
+### Prototipo de Script Sugerido:
 
 ```
 function consolidarDatosEventos() {
@@ -79,7 +79,7 @@ function consolidarDatosEventos() {
 
 ***2.	Script para consolidar la base de participantes:*** Este Script busca generar una tabla única de participantes, consolidando la información contenida en cada una de las hojas del reporte y eliminando duplicados para facilitar la carga a la base de datos.
 
-###Acciones efectuadas por script:
+### Acciones efectuadas por script:
 
 *	Obtiene la hoja activa del archivo de Google Sheets.
 *	Intenta obtener la hoja denominada 'Participantes'. Si no existe, la crea. Si ya existe, limpia la hoja eliminando todos los datos.
@@ -90,7 +90,7 @@ function consolidarDatosEventos() {
 *	Obtiene el rango de datos de la hoja actual y obtiene los valores de ese rango.
 *	Pega los datos en la hoja 'Participantes'.
 
-###Prototipo de Script Sugerido:
+### Prototipo de Script Sugerido:
 
 ```
 function consolidarDatosParticipantes() {
