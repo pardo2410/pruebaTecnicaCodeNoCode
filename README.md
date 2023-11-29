@@ -1,9 +1,4 @@
 # Propuesta de Automatización
-```
-Juan David Pardo Pinzón
-Prueba beca NoCode
-KeepCoding
-```
 
 ## Definición de la estrategia de automatización
 
@@ -284,3 +279,8 @@ A continuación, se presentan capturas de pantalla que muestran los Scripts prel
 
  
 ***
+
+- [Juan David Pardo Pinzón](https://www.linkedin.com/in/juan-david-pardo-pinz%C3%B3n/) 😊
+- Prueba beca NoCode
+- KeepCoding
+
