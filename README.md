@@ -1,4 +1,4 @@
-#Contenido del repositorio
+# Contenido del repositorio
 1.	Carpeta data: Archivos base y Output generados por la ejecución de los Scripts en Google Sheets.
 2.	Modelo_de_datos_JuanDavidPardo: Diagrama de la estructura de la base de datos en SQL elaborado en drawio.
 3.	Readme.md: Propuesta de automatización. 
