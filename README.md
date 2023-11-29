@@ -135,7 +135,7 @@ function consolidarDatosParticipantes() {
 }
 ```
 
-***3.	Script para Eliminar Duplicados en la Hoja ‘Participantes’:***Este script examina cada elemento en la hoja ‘Participantes” y elimina cualquier duplicado, preparando la base de datos para su posterior carga.
+***3.	Script para Eliminar Duplicados en la Hoja Participantes:*** Este script examina cada elemento en la hoja ‘Participantes” y elimina cualquier duplicado, preparando la base de datos para su posterior carga.
 
 ###Acciones efectuadas por script:
 
@@ -172,12 +172,13 @@ function eliminarParticipantesDuplicados() {
   }
 }
 ```
-***5.	Script para crear la tabla de inscripciones:*** Esta tabla permite generar las relaciones entre el ID del participante y los ID_evento
+***4.	Script para crear la tabla de inscripciones:*** Esta tabla permite generar las relaciones entre el ID del participante (ID) y los ID del evento (ID_evento)
 
 ###Acciones efectuadas por script:
 
-* A partir de la información de correos y los datos asociados al nombre del evento se genera un ID único
-* Este posteriormente permitirá generar las relaciones entre tablas en la DB
+* A partir de la información de los correos de los participantes se genera un ID unico para cada participante.
+* Con base en los datos asociados al nombre del evento se genera un ID único para cada evento.
+* La relacion entres ambos ID's permitira generar las relaciones entre las tablas de Eventos y Participantes.
 
 ###Prototipo de Script Sugerido:
 
@@ -267,7 +268,7 @@ function inscripcionID() {
 
 ```
 
-***5.	Script para descargar los archivos necesarios para la carga:*** Este script facilita la descarga automática de los archivos necesarios para la carga en la base de datos, convirtiéndolos en formato CSV para su manejo eficiente.
+***5.	Script para descargar los archivos seran cargados a las base SQL:*** Este script facilita la descarga automática de los archivos necesarios para la carga en la base de datos, convirtiéndolos en formato CSV para su manejo eficiente.
 
 ###Acciones efectuadas por el Script:
 
