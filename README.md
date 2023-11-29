@@ -172,8 +172,102 @@ function eliminarParticipantesDuplicados() {
   }
 }
 ```
+***5.	Script para crear la tabla de inscripciones:*** Esta tabla permite generar las relaciones entre el ID del participante y los ID_evento
 
-***4.	Script para descargar los archivos necesarios para la carga:*** Este script facilita la descarga automática de los archivos necesarios para la carga en la base de datos, convirtiéndolos en formato CSV para su manejo eficiente.
+###Acciones efectuadas por script:
+
+* A partir de la información de correos y los datos asociados al nombre del evento se genera un ID único
+* Este posteriormente permitirá generar las relaciones entre tablas en la DB
+
+###Prototipo de Script Sugerido:
+
+```
+function inscripcionID() {
+  // Definir el archivo activo
+  var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+
+  // Crear una nueva hoja consolidada de Inscripciones
+  var hojaConsolidada = spreadsheet.getSheetByName('Inscripciones');
+  if (!hojaConsolidada) {
+    hojaConsolidada = spreadsheet.insertSheet('Inscripciones');
+  } else {
+    // Limpiar la hoja consolidada si ya existe
+    hojaConsolidada.clear();
+  }
+
+  // Obtener todas las hojas del archivo
+  var hojas = spreadsheet.getSheets();
+
+  // Definir el rango que va de A a F iniciando en la fila 10 
+  var rangoInicial = 'C10:C';
+
+  // Agregar los encabezados
+  var encabezados = ['ID', 'correo_electronico', 'nombre_evento', 'ID_evento'];
+  hojaConsolidada.getRange(1, 1, 1, encabezados.length).setValues([encabezados]);
+
+  // Crear mapas para almacenar los IDs asociados a los correos electrónicos y nombres de eventos únicos
+  var mapaIDsCorreo = {};
+  var mapaIDsEvento = {};
+
+  // Iterar sobre cada hoja
+  for (var i = 0; i < hojas.length; i++) {
+    var hoja = hojas[i];
+
+    // Obtener los datos de B3 de la hoja actual
+    var rangoB3 = hoja.getRange('B3');
+    var datosB3Hoja = rangoB3.getValue();
+
+    // Obtener el rango que deseas consolidar en la hoja actual
+    var rangoHojaCorreo = hoja.getRange('C10:C');
+    var rangoHojaEvento = hoja.getRange('B3');
+
+    // Obtener los datos del rango
+    var datosCorreo = rangoHojaCorreo.getValues();
+    var datosEvento = [[datosB3Hoja]];
+
+    // Filtrar filas con datos existentes
+    datosCorreo = datosCorreo.filter(function(fila) {
+      return fila[0] !== '';
+    });
+
+    if (datosCorreo.length > 0) {
+      // Iterar sobre los datos y asignar IDs numéricos a los correos electrónicos únicos
+      for (var j = 0; j < datosCorreo.length; j++) {
+        var correoElectronico = datosCorreo[j][0];
+
+        if (!mapaIDsCorreo.hasOwnProperty(correoElectronico)) {
+          // Asignar un nuevo ID numérico si el correo electrónico no está en el mapa
+          mapaIDsCorreo[correoElectronico] = Object.keys(mapaIDsCorreo).length + 1;
+        }
+      }
+
+      // Obtener la última fila ocupada en la hoja consolidada
+      var ultimaFilaConsolidada = hojaConsolidada.getLastRow();
+
+      // Asignar IDs numéricos a los correos electrónicos en la hoja consolidada
+      var idsCorreo = datosCorreo.map(function(fila) {
+        return [mapaIDsCorreo[fila[0]]];
+      });
+
+      // Asignar un ID único al evento en la hoja consolidada
+      var nombreEvento = datosEvento[0][0];
+      if (!mapaIDsEvento.hasOwnProperty(nombreEvento)) {
+        mapaIDsEvento[nombreEvento] = Object.keys(mapaIDsEvento).length + 1;
+      }
+      var idEvento = mapaIDsEvento[nombreEvento];
+
+      // Pegar los datos en la hoja consolidada, incluyendo los IDs y el nombre del evento
+      hojaConsolidada.getRange(ultimaFilaConsolidada + 1, 1, datosCorreo.length, 1).setValues(idsCorreo);
+      hojaConsolidada.getRange(ultimaFilaConsolidada + 1, 2, datosCorreo.length, 1).setValues(datosCorreo);
+      hojaConsolidada.getRange(ultimaFilaConsolidada + 1, 3, datosCorreo.length, 1).setValue(nombreEvento);
+      hojaConsolidada.getRange(ultimaFilaConsolidada + 1, 4, datosCorreo.length, 1).setValue(idEvento);
+    }
+  }
+}
+
+```
+
+***5.	Script para descargar los archivos necesarios para la carga:*** Este script facilita la descarga automática de los archivos necesarios para la carga en la base de datos, convirtiéndolos en formato CSV para su manejo eficiente.
 
 ###Acciones efectuadas por el Script:
 
@@ -184,15 +278,13 @@ function eliminarParticipantesDuplicados() {
 ###Prototipo de Script Sugerido:
 ```
 function descarga(){
-
   function descargarCSV() {
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-    archivos = ['Participantes','Eventos']
+    archivos = ['Participantes','Eventos','Inscripciones']
     // Descargar la hoja "Participantes"
     for(var i = 0; i < archivos.length; i++){
       descargarHojaCSV(spreadsheet, archivos[i]);
     }
-    
   }
 
   function descargarHojaCSV(spreadsheet, hojaNombre) {
@@ -223,9 +315,11 @@ function descarga(){
       csv += datos[i].join(",") + '\n';
     }
     return csv;
+    
   }
-  descargarCSV() 
+  descargarCSV()
 }
+
 ```
 
 Para simplificar la ejecución de los scripts en Google Sheets, es posible implementar triggers que programen la ejecución automática de los scripts. A continuación, se detallan los pasos para configurar estos triggers:
@@ -251,10 +345,11 @@ De esta manera queda activado un trigger que ejecutará la función seleccionada
 Con el objetivo de ejecutar los Scripts de manera lógica y secuencial, se ha implementado la función 'ejecutar', la cual se activará como trigger cada vez que se abra el archivo:
 ```
 function ejecutar() {
-    consolidarDatosEventos()
-    consolidarDatosParticipantes()
-    descarga()
-  }
+  consolidarDatosEventos()
+  consolidarDatosParticipantes()
+  inscripcionID()
+  descarga()
+}
 ```  
 
 A continuación, se presentan capturas de pantalla que muestran los Scripts preliminares en acción:
