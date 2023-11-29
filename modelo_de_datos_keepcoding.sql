@@ -200,7 +200,8 @@ values (1,1),(130,1),(2,1),(44,1),(3,1),(59,1),(113,1),(4,1),(47,1),(5,1),(6,1),
 select participantes.id, participantes.nombres, participantes.apellidos, eventos.nombre_evento
 from modelo_de_datos.participantes
 inner join modelo_de_datos.inscripcion_eventos on participantes.id = inscripcion_eventos.id_participante
-inner join modelo_de_datos.eventos on inscripcion_eventos.id_evento = eventos.id_evento;
+inner join modelo_de_datos.eventos on inscripcion_eventos.id_evento = eventos.id_evento
+order by participantes.id;
 
 --2. Número de Participantes por País:
 select pais, count(*) as cantidad_participantes
