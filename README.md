@@ -1,5 +1,11 @@
-# Propuesta de Automatización
+#Contenido del repositorio
+1.	Carpeta data: Archivos base y Output generados por la ejecución de los Scripts en Google Sheets.
+2.	Modelo_de_datos_JuanDavidPardo: Diagrama de la estructura de la base de datos en SQL elaborado en drawio.
+3.	Readme.md: Propuesta de automatización. 
+4.	appScripts.js: Consolidado de los Scripts preliminares creados para Google Sheets.
+5.	modelo_de_datos_keepcoding: Archivo SQL que contiene el Script para generar el modelo de datos y la carga.
 
+# Propuesta de Automatización
 ## Definición de la estrategia de automatización
 
 La propuesta de automatización presentada a Keepcoding consiste en el desarrollo e implementación de una serie de mejoras que permitan minimizar las interacciones con los reportes asociados a los eventos educativos. Facilitando la descarga, procesamiento y carga de los mismos a la base de datos de la compañía.
