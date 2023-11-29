@@ -369,7 +369,7 @@ function ejecutar() {
 
  
 
-***Diagrama DB en SQL:***
+***Diagrama DB en SQL:*** Los Outputs generados por los Script ejecutados en Google Sheets se cargaran mediante instrucciones SQL a la base de datos, diseñada según el siguiente diagrama.
 
 ![image](https://github.com/pardo2410/pruebaTecnicaCodeNoCode/assets/10873597/6c4331b3-e299-47f7-9c2e-549ce792adf4)
 
