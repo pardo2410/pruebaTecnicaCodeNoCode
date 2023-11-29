@@ -5,8 +5,7 @@
 4.	appScripts.js: Consolidado de los Scripts preliminares creados para Google Sheets.
 5.	modelo_de_datos_keepcoding: Archivo SQL que contiene el Script para generar el modelo de datos y la carga.
 
-# Propuesta de Automatización
-## Definición de la estrategia de automatización
+## Propuesta de Automatización
 
 La propuesta de automatización presentada a Keepcoding consiste en el desarrollo e implementación de una serie de mejoras que permitan minimizar las interacciones con los reportes asociados a los eventos educativos. Facilitando la descarga, procesamiento y carga de los mismos a la base de datos de la compañía.
 
