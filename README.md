@@ -323,7 +323,7 @@ function descarga(){
 
 ```
 
-Para simplificar la ejecución de los scripts en Google Sheets, es posible implementar triggers que programen la ejecución automática de los scripts. A continuación, se detallan los pasos para configurar estos triggers:
+***Ejecución automática de Scripts:*** Para simplificar la ejecución de los scripts en Google Sheets, es posible implementar triggers que programen la ejecución automática de los scripts. A continuación, se detallan los pasos para configurar estos triggers:
 
 *	Abre tu proyecto de Google Apps Script.
 *	En el menú lateral izquierdo, accede al icono del reloj (Triggers).
@@ -353,27 +353,31 @@ function ejecutar() {
 }
 ```  
 
-A continuación, se presentan capturas de pantalla que muestran los Scripts preliminares en acción:
+***Visualización outputs de la implementación de los Scripts:*** A continuación, se presentan capturas de pantalla que muestran los Scripts preliminares en acción:
 
-
+*Reporte Original
 ![image](https://github.com/pardo2410/pruebaTecnicaCodeNoCode/assets/10873597/a134851c-c0ba-4f14-b80f-f0cae4f4b249)
 
- 
+ *Reporte Eventos
 ![image](https://github.com/pardo2410/pruebaTecnicaCodeNoCode/assets/10873597/e4bb7b25-ca30-49e7-b3ed-becca499e391)
 
- 
+ *Reporte Participantes
 ![image](https://github.com/pardo2410/pruebaTecnicaCodeNoCode/assets/10873597/588057eb-c6b3-475f-b1ba-b8d9ad746127)
 
- 
+ *Output CSV Eventos & Participantes
 ![image](https://github.com/pardo2410/pruebaTecnicaCodeNoCode/assets/10873597/e20ac116-588f-4516-aa91-16e646510af9)
 
  
 
-***Diagrama DB:***
+***Diagrama DB en SQL:***
 
 ![image](https://github.com/pardo2410/pruebaTecnicaCodeNoCode/assets/10873597/6c4331b3-e299-47f7-9c2e-549ce792adf4)
 
- 
+
+***Propuesta complementaria:*** Se propone integrar a futuro los reportes de Google Sheets con la infraestructura ofrecida por Google Cloud Service, con el fin de generar una mayor automatización del proceso de almacenamiento (Google Cloud Storage), procesamiento (Google Cloud SQL & Google Cloud Function & Google Cloud Schedualer) y visualización de los datos (Google Data Studio). 
+
+
+
 ***
 
 - [Juan David Pardo Pinzón](https://www.linkedin.com/in/juan-david-pardo-pinz%C3%B3n/) 😊
