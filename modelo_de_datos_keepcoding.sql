@@ -189,6 +189,13 @@ values ('Rebekah','Johnson','tkelley@example.net','Adrianview','Michigan','Andor
 ('Amanda','Lam','hernandezangela@example.com','East John','West Virginia','Cayman Islands'),
 ('Jessica','Garcia','owalker@example.com','Greenton','Pennsylvania','Timor-Leste');
 
+--Nota: la carga realizada anteriormente se efectuo manualmente, la propuesta es que se efectue con base en los archivos csv generados a partir del proceso de automatizacion propuesto  
+
+--Metodo de carga de archivos CSV
+--copy eventos from 'C:\Users\pardo\Downloads\Eventos.csv' delimiter ',' csv header;
+--copy participantes from 'C:\Users\pardo\Downloads\Participantes.csv' delimiter ',' csv header;
+--copy inscripcion_eventos from 'C:\Users\pardo\Downloads\Inscripciones.csv' delimiter ',' csv header;
+
 
 -- Insertar datos en la tabla inscripcion_eventos
 insert into modelo_de_datos.inscripcion_eventos(id_participante, id_evento)
